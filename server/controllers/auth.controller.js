@@ -16,3 +16,12 @@ module.exports.logout = (req, res) => {
         res.redirect('/');
     }
 }
+
+module.exports.authorized = (req, res) => {
+    if(req.user) {
+        res.send(200);
+    }
+    else {
+        res.send(403);
+    }
+}

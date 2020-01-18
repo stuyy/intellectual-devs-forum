@@ -10,3 +10,4 @@ router.get('/discord/redirect', passport.authenticate('discord', {
 
 router.get('/discord/failure', controller.failureRedirect);
 router.get('/logout', controller.logout);
+router.get('/authorized', controller.authorized);
