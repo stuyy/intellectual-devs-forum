@@ -30,6 +30,7 @@ async function(accessToken, refreshToken, profile, done) {
                 discriminator: profile.discriminator,
                 discordId: profile.id,
                 avatar: profile.avatar,
+                type: "user",
                 joinedDate: new Date() 
             });
             const userSaved = await newUser.save();

@@ -21,7 +21,7 @@ module.exports.authorized = (req, res) => {
     console.log(req.user);
     if(req.user) {
         console.log("User is authorized.");
-        res.status(200).json({ msg: 'Good' })
+        res.status(200).json({ msg: 'Good', type: req.user.type })
     }
     else {
         res.status(403).json({ msg: 'Forbidden' })
