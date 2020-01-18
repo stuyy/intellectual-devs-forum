@@ -1,1 +1,11 @@
-<p>category-create-form works!</p>
+<form [formGroup]="categoryForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Category Title</mat-label>
+        <input type="text" matInput formControlName="title">
+        <mat-error *ngIf="categoryForm.invalid">Enter a title</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="submit()">
+        <span>Create</span>
+    </button>
+</form>
