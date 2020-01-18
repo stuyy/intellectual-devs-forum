@@ -20,7 +20,33 @@ const createCategory = async (req, res) => {
         res.status(500).json({ msg: 'error' });
     }
 }
-const createTopic = (req, res) => {
-
+const createTopic = async (req, res) => {
+    let { name } = req.body;
+    try {
+        let topic = await ForumTopic.findOne({ name });
+        console.log(topic);
+        if(topic) {
+            console.log("Topic already exists!");
+            res.status(200).json({ msg: 'Already exists' });
+        }
+        else {
+            let saveTopic = await ForumTopic.create({ name, parentCategory });
+            await saveTopic.save();
+            res.status(201).json({ msg: 'Created!' });
+        }
+    }
+    catch(err) {
+        res.status(500).json({ msg: 'error' });
+    }
 }
-module.exports = { createCategory, createTopic }
+
+const getCategories = async (req, res) => {
+    try {
+        let categories = await ForumCategory.find();
+        res.status(200).json(categories);
+    }
+    catch(err) {
+        res.status(500).json({ msg: 'Error' });
+    }
+}
+module.exports = { createCategory, createTopic, getCategories }
