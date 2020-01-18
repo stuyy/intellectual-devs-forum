@@ -1,10 +1,12 @@
 const router = module.exports = require('express').Router();
+const controller = require('../controllers/auth.controller');
 const passport = require('passport');
 const User = require('../models/User');
 
 router.get('/discord', passport.authenticate('discord'));
 router.get('/discord/redirect', passport.authenticate('discord', {
-    failureRedirect: '/'
-}), function(req, res) {
-    console.log("Good")
-});
+    failureRedirect: '/discord/failure'
+}), controller.successRedirect);
+
+router.get('/discord/failure', controller.failureRedirect);
+router.get('/logout', controller.logout);
