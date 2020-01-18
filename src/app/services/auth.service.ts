@@ -11,6 +11,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public isAuthorized() : Observable<any> {
-    return this.http.get<any>(`${environment.host}/auth/authorized`);
+    return this.http.get<any>(`${environment.host}/auth/authorized`, { withCredentials: true });
+  }
+
+  public login() : Observable<any> {
+    return this.http.get<any>(`${environment.host}/auth/discord/login`, { withCredentials: true });
+  }
+
+  public logout() : Observable<any> {
+    return this.http.get<any>(`${environment.host}/auth/logout`, { withCredentials: true });
   }
 }
