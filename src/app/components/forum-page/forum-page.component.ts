@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forum-page',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumPageComponent implements OnInit {
 
-  constructor() { }
+  public isAdmin: boolean = false;
+  
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.isAuthorized().subscribe((res: any) => {
+      console.log(res);
+      if(res.type === 'admin') {
+        this.isAdmin = true;
+      }
+      else {
+        this.isAdmin = false;
+      }
+    }, err => {
+      console.log(err);
+    })
   }
 
 }
