@@ -3,7 +3,7 @@ const controller = require('../controllers/auth.controller');
 const passport = require('passport');
 const User = require('../models/User');
 
-router.get('/discord', passport.authenticate('discord'));
+router.get('/discord/login', passport.authenticate('discord'));
 router.get('/discord/redirect', passport.authenticate('discord', {
     failureRedirect: '/discord/failure'
 }), controller.successRedirect);
