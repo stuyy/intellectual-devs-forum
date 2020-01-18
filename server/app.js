@@ -4,6 +4,7 @@ const cors = require('cors');
 const PORT = process.env.PORT || 3524;
 const app = express();
 const db = require('./database/db')();
+const DiscordStrategy = require('./strategies/DiscordStrategy');
 
 db.on('error', () => console.log('connection error'));
 db.once('open', () => console.log('connected to DB.'))
