@@ -1,1 +1,19 @@
-<p>topic-create-form works!</p>
+<form [formGroup]="topicForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Select Category</mat-label>
+        <mat-select formControlName="parentCategory">
+            <mat-option *ngFor="let cat of categories" [value]="cat.name">
+              {{cat.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Topic Title</mat-label>
+        <input type="text" matInput formControlName="title">
+        <mat-error *ngIf="topicForm.invalid">Enter a title</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="submit()">
+        <span>Create</span>
+    </button>
+</form>

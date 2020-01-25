@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import ForumCategory from 'src/app/models/ForumCategory';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import ForumPost from 'src/app/models/ForumPost';
+import ForumTopic from 'src/app/models/ForumTopic';
 
 @Injectable({
   providedIn: 'root'

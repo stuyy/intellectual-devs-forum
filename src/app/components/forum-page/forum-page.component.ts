@@ -31,7 +31,6 @@ export class ForumPageComponent implements OnInit {
     this.forumService.getForumCategories()
       .subscribe((categories : Array<ForumCategory>) => {
         this.loaded = true;
-        console.log(categories)
         this.categories = categories;
       }, err => {
         console.log(err);

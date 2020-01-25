@@ -1,9 +1,9 @@
-<mat-expansion-panel>
+<mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{category.name}}
       </mat-panel-title>
     </mat-expansion-panel-header>
     <!-- Forum Topics Should Be Rendered Here -->
-    
+    <app-forum-topic *ngFor="let topic of topics" [forumTopic]="topic"></app-forum-topic>
 </mat-expansion-panel>

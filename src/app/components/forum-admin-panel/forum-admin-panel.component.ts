@@ -5,6 +5,7 @@ import ForumCategory from 'src/app/models/ForumCategory';
 import { MatDialog } from '@angular/material/dialog';
 import { ForumDialogComponent } from '../ReuseableDialogs/forum-dialog/forum-dialog.component';
 import { CategoryCreateFormComponent } from '../ForumAdminTools/category-create-form/category-create-form.component';
+import { TopicCreateFormComponent } from '../ForumAdminTools/topic-create-form/topic-create-form.component';
 
 @Component({
   selector: 'app-forum-admin-panel',
@@ -26,10 +27,14 @@ export class ForumAdminPanelComponent implements OnInit {
       data: {
         component: CategoryCreateFormComponent
       }
-    })
+    });
   } 
 
   createTopic() : void {
-
+    this.dialog.open(ForumDialogComponent, {
+      data: {
+        component: TopicCreateFormComponent
+      }
+    });
   }
 }
