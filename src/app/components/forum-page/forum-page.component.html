@@ -1,1 +1,5 @@
 <app-forum-admin-panel *ngIf="isAdmin"></app-forum-admin-panel>
+<!-- Display Forum Components Here Dynamically -->
+<div *ngIf="loaded">
+    <app-forum-category *ngFor="let cat of categories" [category]="cat"></app-forum-category>
+</div>

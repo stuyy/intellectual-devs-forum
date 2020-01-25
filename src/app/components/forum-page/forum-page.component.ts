@@ -11,7 +11,8 @@ import ForumCategory from 'src/app/models/ForumCategory';
 export class ForumPageComponent implements OnInit {
 
   public isAdmin: boolean = false;
-  
+  public categories: Array<ForumCategory> = [];
+  public loaded: boolean = false;
   constructor(private auth: AuthService, private forumService: ForumService) { }
 
   ngOnInit() {
@@ -29,7 +30,9 @@ export class ForumPageComponent implements OnInit {
 
     this.forumService.getForumCategories()
       .subscribe((categories : Array<ForumCategory>) => {
+        this.loaded = true;
         console.log(categories)
+        this.categories = categories;
       }, err => {
         console.log(err);
       });
