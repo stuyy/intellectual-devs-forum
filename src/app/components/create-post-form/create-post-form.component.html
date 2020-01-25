@@ -1,0 +1,12 @@
+<div>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input type="text" matInput formControlName="title">
+            <mat-error *ngIf="form.invalid">Please enter a title</mat-error>
+        </mat-form-field>
+        <quill-editor formControlName="content"></quill-editor>
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-button (click)="submit()">Submit</button>
+    </form>
+</div>

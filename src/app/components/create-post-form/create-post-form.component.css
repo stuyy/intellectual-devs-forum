@@ -1,0 +1,7 @@
+::ng-deep .ql-editor {
+    height: 300px;
+}
+
+mat-form-field {
+    width: 100%;
+}
