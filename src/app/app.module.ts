@@ -27,6 +27,10 @@ import { ForumCategoryComponent } from './components/Forum/forum-category/forum-
 import { ForumTopicComponent } from './components/Forum/forum-topic/forum-topic.component';
 import { ForumPostComponent } from './components/Forum/forum-post/forum-post.component';
 import { ForumTopicPageComponent } from './components/Forum/forum-topic-page/forum-topic-page.component';
+
+import { QuillModule } from 'ngx-quill';
+import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +44,8 @@ import { ForumTopicPageComponent } from './components/Forum/forum-topic-page/for
     ForumCategoryComponent,
     ForumTopicComponent,
     ForumPostComponent,
-    ForumTopicPageComponent
+    ForumTopicPageComponent,
+    CreatePostFormComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +55,13 @@ import { ForumTopicPageComponent } from './components/Forum/forum-topic-page/for
     FormsModule,
     HttpClientModule,
     MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatCardModule,
-    MatInputModule, MatFormFieldModule, MatExpansionModule, MatSelectModule
+    MatInputModule, MatFormFieldModule, MatExpansionModule, MatSelectModule,
+    QuillModule.forRoot({
+      
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ForumDialogComponent, CategoryCreateFormComponent, TopicCreateFormComponent]
+  entryComponents: [ForumDialogComponent, CategoryCreateFormComponent, TopicCreateFormComponent, CreatePostFormComponent]
 })
 export class AppModule { }

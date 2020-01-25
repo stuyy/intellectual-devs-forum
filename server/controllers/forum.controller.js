@@ -78,4 +78,8 @@ const getForumPosts = async (req, res) => {
         console.log(ex);
     }
 }
-module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts }
+
+const createForumPost = async (req, res) => {
+    console.log(req.body);
+}
+module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts, createForumPost }

@@ -6,5 +6,5 @@ export default interface ForumTopic {
     moderators?: Array<any>;
     posts?: Array<ForumPost>;
     parentCategory?: string;
-    _id: string;
+    _id?: string;
 }

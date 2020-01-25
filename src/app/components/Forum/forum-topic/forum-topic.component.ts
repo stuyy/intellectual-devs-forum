@@ -7,7 +7,7 @@ import { ForumService } from 'src/app/services/ForumService/forum.service';
   templateUrl: './forum-topic.component.html',
   styleUrls: ['./forum-topic.component.css']
 })
-export class ForumTopicComponent implements OnInit, OnDestroy {
+export class ForumTopicComponent implements OnInit {
 
   @Input() forumTopic: ForumTopic;
   public url: string;
