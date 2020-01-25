@@ -21,7 +21,7 @@ const createCategory = async (req, res) => {
     }
 }
 const createTopic = async (req, res) => {
-    let { name } = req.body;
+    let { name, parentCategory } = req.body;
     try {
         let topic = await ForumTopic.findOne({ name });
         console.log(topic);
@@ -49,4 +49,33 @@ const getCategories = async (req, res) => {
         res.status(500).json({ msg: 'Error' });
     }
 }
-module.exports = { createCategory, createTopic, getCategories }
+
+const getForumTopicsByName = async (req, res) => {
+    let { name } = req.params;
+    console.log(name);
+    try {
+        let topics = await ForumTopic.find({ parentCategory: name });
+        res.status(200).json(topics);
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).json({ msg: 'error' });
+    }
+}
+
+const getForumPosts = async (req, res) => {
+    let { category, topic } = req.params;
+    // Find Forum Topic where the parent matches the category 
+    try {
+        let forumTopic = await ForumTopic.findOne({ 'name' : { $regex: new RegExp(topic, 'i') }, 'parentCategory': { $regex: new RegExp(category, 'i')}});
+        if(forumTopic) {
+            console.log(forumTopic);
+            // Find all posts and send them back.
+            res.json([]);
+        }
+    }
+    catch(ex) {
+        console.log(ex);
+    }
+}
+module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts }
