@@ -28,4 +28,7 @@ export class ForumService {
   createPost(post: ForumPost) : Observable<ForumPost> {
     return this.http.post<ForumPost>(`${environment.host}/forum/posts/create/`, post, { withCredentials: true });
   }
+  getForumPostById(id) : Observable<ForumPost> {
+    return this.http.get<ForumPost>(`${environment.host}/forum/posts/${id}`);
+  }
 }

@@ -27,9 +27,11 @@ import { ForumCategoryComponent } from './components/Forum/forum-category/forum-
 import { ForumTopicComponent } from './components/Forum/forum-topic/forum-topic.component';
 import { ForumPostComponent } from './components/Forum/forum-post/forum-post.component';
 import { ForumTopicPageComponent } from './components/Forum/forum-topic-page/forum-topic-page.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { QuillModule } from 'ngx-quill';
-import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component'
+import { CreatePostFormComponent } from './components/create-post-form/create-post-form.component';
+import { ForumPostPageComponent } from './components/Forum/forum-post-page/forum-post-page.component'
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { CreatePostFormComponent } from './components/create-post-form/create-po
     ForumTopicComponent,
     ForumPostComponent,
     ForumTopicPageComponent,
-    CreatePostFormComponent
+    CreatePostFormComponent,
+    ForumPostPageComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { CreatePostFormComponent } from './components/create-post-form/create-po
     QuillModule.forRoot({
       
     }),
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

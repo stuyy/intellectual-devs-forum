@@ -7,8 +7,5 @@
     <span class="example-fill-remaining-space"></span>
     <button mat-raised-button color="primary" (click)="createPost()">Create Post</button>
 </mat-toolbar>
-<mat-card *ngFor="let post of posts | async">
-    <mat-card-title>{{post.title}}</mat-card-title>
-    <mat-card-subtitle>by {{post.author}}</mat-card-subtitle>
-</mat-card>
+<app-forum-post *ngFor="let post of posts | async" [post]="post"></app-forum-post>
 <!-- This is where we will load all posts for the forum topic. -->
