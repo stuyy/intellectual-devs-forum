@@ -3,4 +3,6 @@ export default interface ForumPost {
     comments?: Array<any>;
     author?: string;
     content?: string;
+    category: string;
+    topic: string;
 }
