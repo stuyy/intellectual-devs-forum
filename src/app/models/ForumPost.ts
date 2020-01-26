@@ -5,4 +5,7 @@ export default interface ForumPost {
     content?: string;
     category: string;
     topic: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    _id: string;
 }
