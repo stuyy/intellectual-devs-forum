@@ -109,4 +109,17 @@ const createForumPost = async (req, res) => {
         console.log(ex);
     }
 }
-module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts, createForumPost }
+
+const getForumPostById = async (req, res) => {
+    try {
+        let post = await ForumPost.findById(req.params.id);
+        if(post) {
+            res.status(200).json(post);
+        }
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).json({ msg: "Error" });
+    }
+}
+module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts, createForumPost, getForumPostById }
