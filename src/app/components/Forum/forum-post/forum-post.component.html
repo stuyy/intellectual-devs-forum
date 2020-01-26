@@ -1,1 +1,5 @@
-<p>forum-post works!</p>
+<mat-card (click)="openPostPage()">
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-subtitle>by {{post.author}}</mat-card-subtitle>
+    <mat-card-subtitle>Last Updated: {{post.updatedAt | date:'medium'}}</mat-card-subtitle>
+</mat-card>
