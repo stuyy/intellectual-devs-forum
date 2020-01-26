@@ -1,0 +1,16 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+</mat-toolbar>
+<ng-container *ngIf="post | async as postData; else loading">
+    <mat-card>
+        <mat-card-title>{{postData.title}}</mat-card-title>
+        <mat-card-subtitle>by {{postData.author}}</mat-card-subtitle>
+        <mat-card-subtitle>Posted On: {{postData.createdAt | date:'medium'}} </mat-card-subtitle>
+        <mat-card-content>
+            <quill-view [content]="postData.content" format="text" theme="snow"></quill-view>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
+<ng-template #loading>Loading...</ng-template>
