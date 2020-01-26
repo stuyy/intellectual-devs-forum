@@ -68,15 +68,25 @@ const getForumPosts = async (req, res) => {
     let { category, topic } = req.params;
     // Find Forum Topic where the parent matches the category 
     try {
+        // Find the correct forum topic.
         let forumTopic = await ForumTopic.findOne({ 'name' : { $regex: new RegExp(topic, 'i') }, 'parentCategory': { $regex: new RegExp(category, 'i')}});
-        if(forumTopic) {
-            console.log(forumTopic);
+        if(forumTopic) { // if Forum Topic exists, get all posts from DB.
             // Find all posts and send them back.
-            res.json([]);
+            let forumPosts = await ForumPost.find({ topic: forumTopic.name, category: forumTopic.parentCategory }).sort({ updatedAt: -1 });
+            if(forumPosts) {
+                res.status(200).json(forumPosts);
+            }
+            else {
+                console.log("Nothing.");
+                res.status(500).json({ msg: "Error."})
+            }
+        }
+        else {
+            res.status(500).json({ msg: "Error."})
         }
     }
     catch(ex) {
-        console.log(ex);
+        res.status(500).json({ msg: "Error."})
     }
 }
 
