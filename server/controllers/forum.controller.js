@@ -1,5 +1,6 @@
 const ForumCategory = require('../models/forum/ForumCategory');
 const ForumTopic = require('../models/forum/ForumTopic');
+const ForumPost = require('../models/forum/ForumPost');
 
 const createCategory = async (req, res) => {
     let { name } = req.body;
@@ -81,5 +82,21 @@ const getForumPosts = async (req, res) => {
 
 const createForumPost = async (req, res) => {
     console.log(req.body);
+    try {
+        let post = await ForumPost.create({
+            title: req.body.title,
+            content: req.body.content,
+            author: req.user.username,
+            topic: req.body.topic,
+            category: req.body.category
+        });
+        if(post) {
+            console.log(post);
+            res.status(201).json({ msg: "Success", post })
+        }
+    }
+    catch(ex) {
+        console.log(ex);
+    }
 }
 module.exports = { createCategory, createTopic, getCategories, getForumTopicsByName, getForumPosts, createForumPost }
